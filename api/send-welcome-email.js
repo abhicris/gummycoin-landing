@@ -191,6 +191,10 @@ const createWelcomeEmail = (email, name = '') => {
                             <a href="https://believe.app/coin/gum" target="_blank">believe.app/coin/gum</a>
                         </div>
                         <div class="link-item">
+                            <span class="link-label">DexScreener:</span>
+                            <a href="https://dexscreener.com/solana/GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV" target="_blank">dexscreener.com/solana/GUM</a>
+                        </div>
+                        <div class="link-item">
                             <span class="link-label">Contract (Solscan):</span>
                             <a href="https://solscan.io/token/GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV" target="_blank">GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV</a>
                         </div>

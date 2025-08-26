@@ -707,6 +707,68 @@ body {
     font-size: 1.05rem;
 }
 
+/* Links Section */
+.links {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+
+.link-card {
+    background: white;
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 203, 164, 0.1);
+}
+
+.link-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255, 203, 164, 0.2);
+    border-color: rgba(255, 203, 164, 0.3);
+}
+
+.link-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #FFCBA4, #A2E4B8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    color: white;
+    font-size: 2rem;
+    box-shadow: 0 8px 25px rgba(255, 203, 164, 0.3);
+}
+
+.link-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+}
+
+.link-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.link-card .btn {
+    width: 100%;
+    margin-top: auto;
+}
+
 /* Partners Section */
 .partners {
     padding: 6rem 0;
