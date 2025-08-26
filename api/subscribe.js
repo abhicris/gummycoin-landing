@@ -128,7 +128,7 @@ export default async function handler(req, res) {
             
             // Send welcome email and add to audience (non-blocking)
             try {
-                const welcomeEmailResponse = await fetch(`${req.headers.origin || 'http://localhost:3000'}/api/send-welcome-email`, {
+                const welcomeEmailResponse = await fetch(`${req.headers.origin || 'http://localhost:3001'}/api/send-welcome-email`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

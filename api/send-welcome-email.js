@@ -47,14 +47,14 @@ const createWelcomeEmail = (email, name = '') => {
     return {
         from: 'Gummy Team <hello@gummyco.in>',
         to: email,
-        subject: 'Welcome to Gummy! 🍬 Your journey starts here',
+        subject: 'Welcome to GummyCoin! 🍬 Your journey starts here',
         html: `
             <!DOCTYPE html>
             <html>
             <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Welcome to Gummy!</title>
+                <title>Welcome to GummyCoin!</title>
                 <style>
                     body {
                         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -120,6 +120,30 @@ const createWelcomeEmail = (email, name = '') => {
                         position: absolute;
                         left: 0;
                     }
+                    .links-section {
+                        background: #FFF5F7;
+                        padding: 25px;
+                        border-radius: 8px;
+                        margin: 25px 0;
+                        border-left: 4px solid #FF6B9D;
+                    }
+                    .link-item {
+                        margin: 12px 0;
+                        padding: 8px 0;
+                    }
+                    .link-item a {
+                        color: #FF6B9D;
+                        text-decoration: none;
+                        font-weight: 500;
+                    }
+                    .link-item a:hover {
+                        text-decoration: underline;
+                    }
+                    .link-label {
+                        font-weight: 600;
+                        color: #2D3748;
+                        margin-right: 8px;
+                    }
                     .footer {
                         text-align: center;
                         margin-top: 40px;
@@ -133,34 +157,58 @@ const createWelcomeEmail = (email, name = '') => {
             <body>
                 <div class="container">
                     <div class="header">
-                        <div class="logo">🍬 Gummy</div>
+                        <div class="logo">🍬 GummyCoin</div>
                         <div class="welcome-text">Welcome, ${firstName}! 🎉</div>
                     </div>
                     
                     <div class="content">
-                        <p>Thank you for joining the Gummy community! We're excited to have you on board as we revolutionize the way people interact with blockchain technology.</p>
+                        <p>Thank you for joining the GummyCoin community! You're now part of the biggest gummy project backed by gummy market OGs and the crypto community.</p>
                         
-                        <p>You're now part of an exclusive group of early adopters who will get first access to:</p>
+                        <p>You're among the first to experience the future of wellness where community meets innovation. Here's what's coming:</p>
                         
                         <div class="features">
-                            <div class="feature">Early access to our mobile app</div>
-                            <div class="feature">Exclusive GummyCoin rewards</div>
-                            <div class="feature">Beta testing opportunities</div>
-                            <div class="feature">Community events and updates</div>
+                            <div class="feature">Early access to the Gummy app beta</div>
+                            <div class="feature">Exclusive access to Gummy store and events</div>
+                            <div class="feature">Opportunities to co-create gummy brands</div>
+                            <div class="feature">Community-driven wellness ecosystem</div>
                         </div>
                         
                         <p>We'll keep you updated on our progress and let you know as soon as the app is ready for you to try!</p>
                     </div>
                     
                     <div style="text-align: center;">
-                        <a href="https://www.gummyco.in" class="cta-button">Visit Our Website</a>
+                        <a href="https://gummyco.in" class="cta-button">Visit Our Website</a>
+                    </div>
+                    
+                    <div class="links-section">
+                        <h3 style="margin-top: 0; color: #2D3748;">🔗 Core Links</h3>
+                        <div class="link-item">
+                            <span class="link-label">X / Twitter:</span>
+                            <a href="https://x.com/gummycollective" target="_blank">x.com/gummycollective</a>
+                        </div>
+                        <div class="link-item">
+                            <span class="link-label">Believe Token:</span>
+                            <a href="https://believe.app/coin/gum" target="_blank">believe.app/coin/gum</a>
+                        </div>
+                        <div class="link-item">
+                            <span class="link-label">Contract (Solscan):</span>
+                            <a href="https://solscan.io/token/GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV" target="_blank">GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV</a>
+                        </div>
+                        <div class="link-item">
+                            <span class="link-label">Website:</span>
+                            <a href="https://gummyco.in" target="_blank">gummyco.in</a>
+                        </div>
+                        <div class="link-item">
+                            <span class="link-label">Support:</span>
+                            <a href="mailto:support@gummyco.in">support@gummyco.in</a>
+                        </div>
                     </div>
                     
                     <div class="footer">
                         <p>This email was sent to ${email}</p>
-                        <p><strong>💬 Questions? Just reply to this email!</strong></p>
-                        <p>If you didn't sign up for Gummy, you can safely ignore this email.</p>
-                        <p>© 2024 Gummy. All rights reserved.</p>
+                        <p><strong>💬 Questions? Contact us at support@gummyco.in</strong></p>
+                        <p>If you didn't sign up for GummyCoin, you can safely ignore this email.</p>
+                        <p>© 2024 GummyCoin by GummyCollective. All rights reserved.</p>
                     </div>
                 </div>
             </body>
