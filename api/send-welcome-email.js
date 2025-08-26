@@ -183,28 +183,40 @@ const createWelcomeEmail = (email, name = '') => {
                     <div class="links-section">
                         <h3 style="margin-top: 0; color: #2D3748;">🔗 Core Links</h3>
                         <div class="link-item">
-                            <span class="link-label">X / Twitter:</span>
+                            <span class="link-label">🐦 Twitter:</span>
                             <a href="https://x.com/gummycollective" target="_blank">x.com/gummycollective</a>
                         </div>
                         <div class="link-item">
-                            <span class="link-label">Believe Token:</span>
+                            <span class="link-label">📊 Believe:</span>
                             <a href="https://believe.app/coin/gum" target="_blank">believe.app/coin/gum</a>
                         </div>
                         <div class="link-item">
-                            <span class="link-label">DexScreener:</span>
+                            <span class="link-label">👻 Phantom:</span>
+                            <a href="https://phantom.com/tokens/solana/GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV" target="_blank">phantom.com/tokens/solana/GUM</a>
+                        </div>
+                        <div class="link-item">
+                            <span class="link-label">🚀 Jupiter:</span>
+                            <a href="https://jup.ag/tokens/GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV" target="_blank">jup.ag/tokens/GUM</a>
+                        </div>
+                        <div class="link-item">
+                            <span class="link-label">📈 DexScreener:</span>
                             <a href="https://dexscreener.com/solana/GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV" target="_blank">dexscreener.com/solana/GUM</a>
                         </div>
                         <div class="link-item">
-                            <span class="link-label">Contract (Solscan):</span>
-                            <a href="https://solscan.io/token/GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV" target="_blank">GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV</a>
+                            <span class="link-label">🔗 Solscan:</span>
+                            <a href="https://solscan.io/token/GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV" target="_blank">solscan.io/token/GUM</a>
                         </div>
                         <div class="link-item">
-                            <span class="link-label">Website:</span>
+                            <span class="link-label">🌐 Website:</span>
                             <a href="https://gummyco.in" target="_blank">gummyco.in</a>
                         </div>
                         <div class="link-item">
-                            <span class="link-label">Support:</span>
+                            <span class="link-label">📩 Support:</span>
                             <a href="mailto:support@gummyco.in">support@gummyco.in</a>
+                        </div>
+                        <div class="link-item">
+                            <span class="link-label">✅ Contract:</span>
+                            <span style="font-family: monospace; background: #f0f0f0; padding: 2px 6px; border-radius: 4px;">GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV</span>
                         </div>
                     </div>
                     
