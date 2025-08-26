@@ -8,8 +8,7 @@
     "dev": "nodemon api-handler.js",
     "deploy": "./deploy.sh",
     "deploy:quick": "git add . && git commit -m \"Quick update\" && git push origin master",
-    "build": "echo \"Static site - no build required\"",
-    "vercel-build": "echo \"Static site - no build required\""
+        "build": "echo \"Static site - no build required\""
   },
   "keywords": [
     "gummycoin",

@@ -1,0 +1,8 @@
+node_modules/
+.git/
+.gitignore
+README.md
+DEPLOYMENT_WORKFLOW.md
+*.log
+.env
+.env.local

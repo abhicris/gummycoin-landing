@@ -1,3 +1,7 @@
 {
-  "version": 2
+  "version": 2,
+  "buildCommand": "echo 'Static site - no build required'",
+  "outputDirectory": ".",
+  "installCommand": "npm install",
+  "framework": null
 }
