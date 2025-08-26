@@ -1,24 +1,20 @@
 {
-  "name": "gummycoin-landing",
+  "name": "gummy-landing-page-api",
   "version": "1.0.0",
-  "description": "Official GummyCoin landing page - a community-owned platform where wellness meets play",
+  "description": "Backend API for Gummy landing page with email collection and whitelist management",
   "main": "api-handler.js",
   "scripts": {
     "start": "node api-handler.js",
     "dev": "nodemon api-handler.js",
-    "deploy": "./deploy.sh",
-    "deploy:quick": "git add . && git commit -m \"Quick update\" && git push origin master",
-    "build": "echo \"Static site - no build required\"",
-    "vercel-build": "echo \"Static site - no build required\""
+    "deploy": "netlify deploy --dir=. --prod"
   },
   "keywords": [
-    "gummycoin",
-    "gum",
+    "gummy",
     "landing-page",
     "email-collection",
-    "crypto",
-    "solana",
-    "wellness"
+    "whitelist",
+    "private-sale",
+    "crypto"
   ],
   "author": "Gummy Team",
   "license": "MIT",
@@ -36,3 +32,4 @@
     "node": ">=18.0.0"
   }
 }
+
