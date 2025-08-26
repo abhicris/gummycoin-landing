@@ -45,6 +45,7 @@ body {
     gap: 0.5rem;
     font-size: 1.5rem;
     font-weight: 700;
+    flex-shrink: 0;
 }
 
 .nav-logo a {
@@ -74,75 +75,79 @@ body {
 }
 
 /* GummyCoin Logo Styles */
-.gummycoin-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 80px;
-    min-height: 80px;
+.logo-image {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
 }
 
-.logo-ring {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    border: 4px solid #FFD700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-    overflow: visible;
+.logo-image:hover {
+    transform: scale(1.05);
 }
 
-.logo-text-top {
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 9px;
-    font-weight: 700;
-    color: #2E7D32;
-    text-align: center;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+.footer-logo-image {
+    height: 40px;
+    width: auto;
 }
 
-.logo-text-bottom {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 11px;
-    font-weight: 700;
-    color: #2E7D32;
-    text-align: center;
-    white-space: nowrap;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+.mini-logo-image {
+    height: 30px;
+    width: auto;
+    margin-right: 8px;
 }
 
-.logo-center {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #4CAF50, #2E7D32);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px solid #1B5E20;
+/* Responsive Logo Sizing */
+@media (max-width: 768px) {
+    .logo-image {
+        height: 40px;
+    }
+    
+    .footer-logo-image {
+        height: 32px;
+    }
+    
+    .mini-logo-image {
+        height: 24px;
+        margin-right: 6px;
+    }
 }
 
-.gummy-bear {
-    font-size: 24px;
-    filter: hue-rotate(30deg) saturate(1.2);
+@media (max-width: 480px) {
+    .logo-image {
+        height: 35px;
+    }
+    
+    .footer-logo-image {
+        height: 28px;
+    }
+    
+    .mini-logo-image {
+        height: 20px;
+        margin-right: 4px;
+    }
+    
+    .nav-logo .logo-text {
+        font-size: 1.2rem;
+    }
 }
 
-/* Footer logo adjustments */
-.footer-logo .gummycoin-logo {
-    transform: scale(0.8);
+@media (min-width: 1200px) {
+    .logo-image {
+        height: 60px;
+    }
+    
+    .footer-logo-image {
+        height: 48px;
+    }
+    
+    .mini-logo-image {
+        height: 36px;
+        margin-right: 10px;
+    }
 }
+
+/* Old CSS-based logo styles removed - now using image-based logo */
 
 /* Core Links Section */
 .core-links {
@@ -439,6 +444,7 @@ body {
     color: white;
     font-weight: 600;
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 .app-icon {
@@ -817,6 +823,7 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
+    flex-shrink: 0;
 }
 
 .footer-logo .logo-icon {
