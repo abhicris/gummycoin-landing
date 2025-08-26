@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gummyverse: A Litepaper on the Future of Wellness | Gummy Ecosystem</title>
+    <meta name="description" content="Discover the Gummyverse - where wellness gets rewarded. Learn about GummyCoin, the Gummy Stash app, and our vision for the future of wellness.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .whitepaper-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.8;
+        }
+        
+        .whitepaper-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #FFCBA4 0%, #A2E4B8 100%);
+            border-radius: 20px;
+            color: white;
+        }
+        
+        .whitepaper-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .whitepaper-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #FFCBA4;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #A2E4B8;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section h3 {
+            color: #333;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+        }
+        
+        .section p {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #FFCBA4 0%, #A2E4B8 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "🍬";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+        
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .tokenomics-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .tokenomics-percentage {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tokenomics-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .tokenomics-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+        }
+        
+        .roadmap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .phase-card {
+            background: white;
+            border: 2px solid #A2E4B8;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .phase-number {
+            background: #FFCBA4;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+        
+        .phase-title {
+            color: #FFCBA4;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #A2E4B8 0%, #FFCBA4 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 1rem;
+        }
+        
+        .back-to-home {
+            display: inline-block;
+            background: white;
+            color: #FFCBA4;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .whitepaper-container {
+                padding: 1rem;
+            }
+            
+            .whitepaper-title {
+                font-size: 2rem;
+            }
+            
+            .roadmap {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Navigation fixes */
+        .section {
+            scroll-margin-top: 100px; /* Account for fixed navbar */
+        }
+        
+        .nav-links a {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #FFCBA4;
+        }
+        
+        /* Smooth scrolling for the page */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-icon">🍬</span>
+                    <span class="logo-text">Gummy</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#gummy-stash-app">The Stash App</a>
+                <a href="#gummycoin">GummyCoin</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#roadmap">Roadmap</a>
+            </div>
+            <div class="nav-cta">
+                <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                <a href="private-sale.html" class="btn btn-primary">Private Sale</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="whitepaper-container">
+        <!-- Header -->
+        <div class="whitepaper-header">
+            <h1 class="whitepaper-title">The Gummyverse</h1>
+            <p class="whitepaper-subtitle">A Litepaper on the Future of Wellness</p>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="section">
+            <h2>Welcome to the Gummyverse: Where Wellness Gets Rewarded</h2>
+            <p>Every gummy you choose is a small, intentional act of self-care. It's a moment of fun, a step on your wellness journey, a pause for healing and mindfulness. We believe this positive energy shouldn't just disappear after the last bite. It should be amplified, celebrated, and rewarded.</p>
+            <p>Welcome to the Gummy Ecosystem. We are building a positive feedback loop for your wellness journey. Our platform connects the physical gummies you love to a digital universe of games, events, and community perks, all powered by our loyalty token, GummyCoin (GUM).</p>
+        </div>
+
+        <!-- New Way to Play & Heal -->
+        <div class="section">
+            <h2>1. A New Way to Play & Heal</h2>
+            <p>Every gummy you choose is a small, intentional act of self-care. It's a moment of fun, a step on your wellness journey, a pause for healing and mindfulness. We believe this positive energy shouldn't just disappear after the last bite. It should be amplified, celebrated, and rewarded.</p>
+            <p>Welcome to the Gummy Ecosystem. We are building a positive feedback loop for your wellness journey. Our platform connects the physical gummies you love to a digital universe of games, events, and community perks, all powered by our loyalty token, GummyCoin (GUM).</p>
+        </div>
+
+        <!-- The Gummy Stash App -->
+        <div class="section" id="gummy-stash-app">
+            <h2>2. The Gummy Stash App: Your Portal</h2>
+            <p>More than an app, the Gummy Stash is your personal portal to the Gummyverse. It's a seamless digital integration into your wellness lifestyle.</p>
+            
+            <h3>Discover with Joy</h3>
+            <p>Explore a vibrant, curated marketplace of the world's best wellness gummies. Find new favorites and connect with the brands that share your values.</p>
+            
+            <h3>Pay with Presence</h3>
+            <p>Our magical payment experience is designed to be so fast and simple, it keeps you in the moment.</p>
+            
+            <h3>Feel the Reward</h3>
+            <p>The instant you pay, the app comes alive. Watch your GummyCoin stash grow in a fun, celebratory way that makes every purchase feel like a small victory for your well-being.</p>
+        </div>
+
+        <!-- What is GummyCoin -->
+        <div class="section" id="gummycoin">
+            <h2>3. What is GummyCoin (GUM)? The Currency of Fun</h2>
+            <p>Think of GummyCoin as more than a reward; it's your digital high-five, your player score, and your all-access pass to our ecosystem.</p>
+            <p>It's not a complex investment. It's our way of thanking you for being part of our community.</p>
+            
+            <div class="highlight-box">
+                <h3>It's your key to fun. Use your $GUM$ to:</h3>
+                <ul class="feature-list">
+                    <li><strong>Play Games:</strong> Participate in fun, simple mini-games within the app to earn more rewards.</li>
+                    <li><strong>Unlock Events:</strong> Get access to exclusive virtual and real-world wellness events, from guided meditations to talks with industry leaders.</li>
+                    <li><strong>Gain Access:</strong> Purchase limited-edition products and unique brand collaborations.</li>
+                    <li><strong>Have a Voice:</strong> Participate in community votes for new gummy flavors, brand partnerships, and the future of the Gummyverse.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Philosophy & Tokenomics -->
+        <div class="section" id="tokenomics">
+            <h2>4. Our Philosophy & Tokenomics</h2>
+            <p>The Gummyverse is a community-first ecosystem built on a foundation of openness and positivity. We are building this with you, for you.</p>
+            <p>In the spirit of transparency, here is a clear breakdown of the GummyCoin supply. There will be a fixed total supply of 100,000,000 GummyCoin (GUM), ensuring the model is sustainable and non-inflationary.</p>
+            
+            <div class="highlight-box">
+                <h3>Token Distribution (100M Total Supply)</h3>
+                <div class="tokenomics-grid">
+                    <div class="tokenomics-item">
+                        <div class="tokenomics-percentage">35%</div>
+                        <div class="tokenomics-label">Community & Rewards</div>
+                        <div class="tokenomics-description">The largest portion, dedicated to rewarding you for participating in the ecosystem. This funds your loyalty rewards, airdrops, and future game prizes.</div>
+                    </div>
+                    <div class="tokenomics-item">
+                        <div class="tokenomics-percentage">25%</div>
+                        <div class="tokenomics-label">Ecosystem Treasury</div>
+                        <div class="tokenomics-description">These funds are for the long-term health and growth of the Gummyverse, including forming new brand partnerships, providing liquidity on exchanges, and funding community grants.</div>
+                    </div>
+                    <div class="tokenomics-item">
+                        <div class="tokenomics-percentage">20%</div>
+                        <div class="tokenomics-label">Core Contributors</div>
+                        <div class="tokenomics-description">To reward the founding team and future builders. These tokens are locked and vest over several years to ensure a long-term commitment to the project's success.</div>
+                    </div>
+                    <div class="tokenomics-item">
+                        <div class="tokenomics-percentage">20%</div>
+                        <div class="tokenomics-label">Early Backers & Public Launch</div>
+                        <div class="tokenomics-description">Allocated for our initial strategic partners and the public community launch, which allows everyone a chance to be a part of the journey from day one.</div>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; font-style: italic;">This model is designed to create a sustainable, community-driven economy where everyone is aligned for long-term success.</p>
+            </div>
+        </div>
+
+        <!-- Roadmap -->
+        <div class="section" id="roadmap">
+            <h2>5. Our Roadmap: From Seed to Forest</h2>
+            <p>Our journey is an organic one, and we're inviting you to grow with us.</p>
+            
+            <div class="roadmap">
+                <div class="phase-card">
+                    <div class="phase-number">1</div>
+                    <h3 class="phase-title">The Seed</h3>
+                    <p>We are gathering our first founding members through our private beta to plant the seeds of our community and help us refine the core app experience.</p>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">2</div>
+                    <h3 class="phase-title">The Sprout</h3>
+                    <p>The Gummy Stash app will launch to the public! We'll onboard our first wave of official brand partners and roll out the first digital integrations.</p>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">3</div>
+                    <h3 class="phase-title">The Bloom</h3>
+                    <p>The Gummyverse comes alive. We'll introduce staking, our first interactive mini-games, and access to virtual wellness events for $GUM$ holders.</p>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">4</div>
+                    <h3 class="phase-title">The Evergreen Forest</h3>
+                    <p>Our vision for a fully open and thriving ecosystem. This includes community governance, deeper brand partnerships, and a universe of interconnected digital and physical experiences.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Join the Drop!</h2>
+            <p>This is more than an app; it's a movement to make wellness more fun, rewarding, and connected. Be a founding member of the Gummyverse. Help us build a world where every small act of self-care is amplified and celebrated.</p>
+            <p><strong>Sign up for the beta on gummyco.in to get your welcome bonus and start the journey today.</strong></p>
+            <a href="index.html" class="back-to-home">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

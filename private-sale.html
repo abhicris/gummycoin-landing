@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GummyCoin Private Sale - Whitelisted Access Only</title>
+    <meta name="description" content="Exclusive GummyCoin private sale for whitelisted wallets. Join the future of payments and rewards.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-icon">🍬</span>
+                    <span class="logo-text">Gummy</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="whitepaper.html">Whitepaper</a>
+                <a href="#sale-info">Sale Info</a>
+                <a href="#whitelist">Whitelist</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="nav-cta">
+                <button class="btn btn-primary" id="connectWalletBtn">Connect Wallet</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero private-sale-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="sale-badge">
+                    <i class="fas fa-lock"></i>
+                    <span>Private Sale - Whitelisted Only</span>
+                </div>
+                <h1 class="hero-title">
+                    GummyCoin <span class="gradient-text">Private Sale</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Exclusive access to GummyCoin tokens for whitelisted wallets. 
+                    Join the future of payments and rewards with early access pricing.
+                </p>
+                <div class="sale-stats">
+                    <div class="stat">
+                        <span class="stat-number">$0.001</span>
+                        <span class="stat-label">Token Price</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50M</span>
+                        <span class="stat-label">Tokens Available</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1,000</span>
+                        <span class="stat-label">Whitelisted Wallets</span>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <button class="btn btn-primary btn-large" id="checkWhitelistBtn">
+                        <i class="fas fa-check-circle"></i>
+                        Check Whitelist Status
+                    </button>
+                    <button class="btn btn-secondary btn-large" onclick="scrollToSaleInfo()">
+                        <i class="fas fa-info-circle"></i>
+                        Sale Details
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="sale-visual">
+                    <div class="token-card">
+                        <div class="token-icon">🍬</div>
+                        <div class="token-info">
+                            <h3>GummyCoin</h3>
+                            <p>GUMMY</p>
+                            <div class="token-price">$0.001</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%"></div>
+                        <span class="progress-text">65% Sold</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Whitelist Check Section -->
+    <section id="whitelist" class="whitelist-section">
+        <div class="container">
+            <h2 class="section-title">Check Your Whitelist Status</h2>
+            <p class="section-subtitle">Connect your wallet to verify if you're whitelisted for the private sale</p>
+            
+            <div class="whitelist-check-container">
+                <div class="wallet-status" id="walletStatus">
+                    <div class="status-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Wallet Not Connected</h3>
+                    <p>Connect your wallet to check whitelist status</p>
+                    <button class="btn btn-primary" id="connectWalletBtn2">
+                        <i class="fas fa-plug"></i>
+                        Connect Wallet
+                    </button>
+                </div>
+
+                <div class="whitelist-form" id="whitelistForm" style="display: none;">
+                    <div class="form-group">
+                        <label>Wallet Address</label>
+                        <input type="text" id="walletAddress" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="emailAddress" placeholder="Enter your email for updates">
+                    </div>
+                    <div class="form-group">
+                        <label>Allocation Amount</label>
+                        <select id="allocationAmount">
+                            <option value="">Select allocation</option>
+                            <option value="1000">1,000 GUMMY ($1)</option>
+                            <option value="5000">5,000 GUMMY ($5)</option>
+                            <option value="10000">10,000 GUMMY ($10)</option>
+                            <option value="25000">25,000 GUMMY ($25)</option>
+                            <option value="50000">50,000 GUMMY ($50)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large" id="submitWhitelistBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Application
+                    </button>
+                </div>
+
+                <div class="whitelist-result" id="whitelistResult" style="display: none;">
+                    <div class="result-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Whitelist Status</h3>
+                    <div class="status-details">
+                        <p><strong>Status:</strong> <span id="whitelistStatus">Checking...</span></p>
+                        <p><strong>Allocation:</strong> <span id="allocationAmount">-</span></p>
+                        <p><strong>Purchase Deadline:</strong> <span id="purchaseDeadline">-</span></p>
+                    </div>
+                    <button class="btn btn-primary" id="purchaseBtn" style="display: none;">
+                        <i class="fas fa-shopping-cart"></i>
+                        Purchase Tokens
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sale Information -->
+    <section id="sale-info" class="sale-info-section">
+        <div class="container">
+            <h2 class="section-title">Private Sale Details</h2>
+            <div class="sale-grid">
+                <div class="sale-card">
+                    <div class="card-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Token Details</h3>
+                    <ul>
+                        <li><strong>Token Name:</strong> GummyCoin</li>
+                        <li><strong>Symbol:</strong> GUMMY</li>
+                        <li><strong>Total Supply:</strong> 420,000,000</li>
+                        <li><strong>Private Sale Price:</strong> $0.001</li>
+                        <li><strong>Public Sale Price:</strong> $0.002</li>
+                    </ul>
+                </div>
+                <div class="sale-card">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <h3>Sale Timeline</h3>
+                    <ul>
+                        <li><strong>Whitelist Opens:</strong> Dec 1, 2024</li>
+                        <li><strong>Private Sale Starts:</strong> Dec 15, 2024</li>
+                        <li><strong>Private Sale Ends:</strong> Jan 15, 2025</li>
+                        <li><strong>Token Distribution:</strong> Jan 30, 2025</li>
+                        <li><strong>Public Sale:</strong> Feb 1, 2025</li>
+                    </ul>
+                </div>
+                <div class="sale-card">
+                    <div class="card-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Whitelist Requirements</h3>
+                    <ul>
+                        <li>Minimum allocation: 1,000 GUMMY</li>
+                        <li>Maximum allocation: 50,000 GUMMY</li>
+                        <li>KYC verification required</li>
+                        <li>US residents eligible</li>
+                        <li>One wallet per person</li>
+                    </ul>
+                </div>
+                <div class="sale-card">
+                    <div class="card-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Payment Methods</h3>
+                    <ul>
+                        <li>USDC (Ethereum)</li>
+                        <li>USDT (Ethereum)</li>
+                        <li>ETH (Ethereum)</li>
+                        <li>Credit Card (via Stripe)</li>
+                        <li>Bank Transfer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Collection Section -->
+    <section class="email-collection-section">
+        <div class="container">
+            <div class="email-content">
+                <h2>Stay Updated on GummyCoin</h2>
+                <p>Get exclusive updates on the private sale, token launch, and ecosystem development</p>
+                <form class="email-form" id="emailForm">
+                    <div class="form-group">
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </form>
+                <div class="email-benefits">
+                    <div class="benefit">
+                        <i class="fas fa-bell"></i>
+                        <span>Private sale notifications</span>
+                    </div>
+                    <div class="benefit">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Token price updates</span>
+                    </div>
+                    <div class="benefit">
+                        <i class="fas fa-gift"></i>
+                        <span>Exclusive airdrops</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🍬</span>
+                        <span class="logo-text">Gummy</span>
+                    </div>
+                    <p>Join the future of payments and rewards with GummyCoin.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Sale</h4>
+                    <ul>
+                        <li><a href="#sale-info">Sale Details</a></li>
+                        <li><a href="#whitelist">Whitelist</a></li>
+                        <li><a href="#">Tokenomics</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Whitepaper</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Disclaimers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Gummy Ecosystem. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="private-sale.js"></script>
+</body>
+</html>
+

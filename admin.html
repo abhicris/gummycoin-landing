@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gummy Email Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-container {
+            max-width: 1000px;
+            margin: 100px auto 50px;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .admin-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+        
+        .admin-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .admin-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .admin-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .admin-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .admin-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #FFCBA4, #A2E4B8);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .admin-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .admin-button.secondary {
+            background: #6c757d;
+        }
+        
+        .admin-button.danger {
+            background: #dc3545;
+        }
+        
+        .stats-display {
+            background: #fff;
+            border: 2px solid #FFCBA4;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFCBA4;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .config-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+        
+        .config-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .config-input:focus {
+            outline: none;
+            border-color: #FFCBA4;
+        }
+        
+        .email-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .email-table th,
+        .email-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .email-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .email-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .admin-container {
+                margin: 80px 1rem 2rem;
+                padding: 1.5rem;
+            }
+            
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .config-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .email-table {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 class="admin-title">🍬 Gummy Email Dashboard</h1>
+            <p class="admin-subtitle">Manage collected emails and configure automation</p>
+            <button class="admin-button danger" onclick="logout()" style="margin-top: 1rem;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+        
+        <div class="admin-grid">
+            <!-- Stats Card -->
+            <div class="admin-card">
+                <h3>📊 Email Statistics</h3>
+                <p>View real-time stats about collected emails and export data.</p>
+                <button class="admin-button" onclick="refreshStats()">
+                    <i class="fas fa-chart-bar"></i> View Stats
+                </button>
+                <button class="admin-button" onclick="GummyAdmin.exportEmails()">
+                    <i class="fas fa-download"></i> Export CSV
+                </button>
+                
+                <div id="statsDisplay" class="stats-display hidden">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalSignups">0</span>
+                            <span class="stat-label">Total Signups</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="todaySignups">0</span>
+                            <span class="stat-label">Today</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="weekSignups">0</span>
+                            <span class="stat-label">This Week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- N8N Configuration Card -->
+            <div class="admin-card">
+                <h3>🔗 N8N Integration</h3>
+                <p>Configure your N8N webhook URL to automate email workflows.</p>
+                
+                <div class="config-form">
+                    <input type="url" 
+                           id="n8nWebhookUrl" 
+                           class="config-input" 
+                           placeholder="https://your-n8n-instance.com/webhook/gummy-signup">
+                    <button class="admin-button" onclick="configureN8N()">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </div>
+                
+                <div style="margin-top: 1rem;">
+                    <button class="admin-button secondary" onclick="testN8NConnection()">
+                        <i class="fas fa-plug"></i> Test Connection
+                    </button>
+                    <button class="admin-button" onclick="GummyAdmin.syncToN8N()">
+                        <i class="fas fa-sync"></i> Sync All Emails
+                    </button>
+                </div>
+                
+                <div id="n8nStatus" style="margin-top: 1rem; padding: 0.75rem; border-radius: 6px; display: none;">
+                </div>
+            </div>
+            
+            <!-- Email Management Card -->
+            <div class="admin-card">
+                <h3>📧 Email Management</h3>
+                <p>View, search, and manage collected email addresses.</p>
+                
+                <button class="admin-button" onclick="viewEmails()">
+                    <i class="fas fa-list"></i> View All Emails
+                </button>
+                <button class="admin-button secondary" onclick="searchEmails()">
+                    <i class="fas fa-search"></i> Search Emails
+                </button>
+                <button class="admin-button danger" onclick="GummyAdmin.clearSignups()">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+            </div>
+            
+            <!-- Quick Actions Card -->
+            <div class="admin-card">
+                <h3>⚡ Quick Actions</h3>
+                <p>Common tasks and useful tools for email management.</p>
+                
+                <button class="admin-button" onclick="copyEmailList()">
+                    <i class="fas fa-copy"></i> Copy Email List
+                </button>
+                <button class="admin-button secondary" onclick="goToLandingPage()">
+                    <i class="fas fa-home"></i> Landing Page
+                </button>
+                <button class="admin-button" onclick="downloadBackup()">
+                    <i class="fas fa-shield-alt"></i> Backup Data
+                </button>
+            </div>
+        </div>
+        
+        <!-- Email Table -->
+        <div id="emailTableContainer" class="hidden">
+            <h3>Recent Email Signups</h3>
+            <table class="email-table">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Source</th>
+                        <th>Date</th>
+                        <th>Referrer</th>
+                        <th>Interest</th>
+                    </tr>
+                </thead>
+                <tbody id="emailTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Password Protection
+        const ADMIN_PASSWORD = 'gummy2024'; // Change this to your desired password
+        
+        function checkAuth() {
+            const isAuthenticated = sessionStorage.getItem('gummy_admin_auth');
+            if (!isAuthenticated) {
+                showLoginScreen();
+                return false;
+            }
+            return true;
+        }
+        
+        function showLoginScreen() {
+            document.body.innerHTML = `
+                <div style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh;
+                    background: linear-gradient(135deg, #FFCBA4 0%, #A2E4B8 100%);
+                    font-family: 'Inter', sans-serif;
+                ">
+                    <div style="
+                        background: white;
+                        padding: 3rem;
+                        border-radius: 20px;
+                        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                        text-align: center;
+                        max-width: 400px;
+                        width: 90%;
+                    ">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🍬</div>
+                        <h1 style="color: #1a1a1a; margin-bottom: 1rem;">Gummy Admin</h1>
+                        <p style="color: #666; margin-bottom: 2rem;">Enter password to access dashboard</p>
+                        
+                        <input type="password" 
+                               id="adminPassword" 
+                               placeholder="Enter password"
+                               style="
+                                   width: 100%;
+                                   padding: 1rem;
+                                   border: 2px solid #e0e0e0;
+                                   border-radius: 8px;
+                                   font-size: 1rem;
+                                   margin-bottom: 1rem;
+                                   box-sizing: border-box;
+                               "
+                               onkeypress="if(event.key==='Enter') login()">
+                        
+                        <button onclick="login()" 
+                                style="
+                                    width: 100%;
+                                    padding: 1rem;
+                                    background: linear-gradient(135deg, #FFCBA4, #A2E4B8);
+                                    color: white;
+                                    border: none;
+                                    border-radius: 8px;
+                                    font-size: 1rem;
+                                    font-weight: 600;
+                                    cursor: pointer;
+                                ">
+                            Access Dashboard
+                        </button>
+                        
+                        <div id="loginError" style="
+                            color: #dc3545;
+                            margin-top: 1rem;
+                            display: none;
+                        "></div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function login() {
+            const password = document.getElementById('adminPassword').value;
+            const errorDiv = document.getElementById('loginError');
+            
+            if (password === ADMIN_PASSWORD) {
+                sessionStorage.setItem('gummy_admin_auth', 'true');
+                location.reload();
+            } else {
+                errorDiv.textContent = 'Incorrect password';
+                errorDiv.style.display = 'block';
+                document.getElementById('adminPassword').value = '';
+            }
+        }
+        
+        function logout() {
+            sessionStorage.removeItem('gummy_admin_auth');
+            location.reload();
+        }
+        
+        // Check authentication on page load
+        if (!checkAuth()) {
+            // Stop execution if not authenticated
+            throw new Error('Not authenticated');
+        }
+        
+        // Admin Dashboard Functions
+        function refreshStats() {
+            console.log('📊 Refreshing stats...');
+            
+            // Get emails directly from localStorage for debugging
+            const emails = JSON.parse(localStorage.getItem('gummy_signups') || '[]');
+            console.log('📊 Raw emails from localStorage:', emails);
+            
+            // Get stats from server (now async)
+            GummyAdmin.getStats().then(stats => {
+                console.log('📊 Processed stats:', stats);
+                
+                const today = new Date().toISOString().split('T')[0];
+                const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+                
+                document.getElementById('totalSignups').textContent = stats.totalSignups;
+                document.getElementById('todaySignups').textContent = stats.signupsByDay[today] || 0;
+                
+                // Calculate week signups
+                let weekSignups = 0;
+                for (let date in stats.signupsByDay) {
+                    if (date >= weekAgo) {
+                        weekSignups += stats.signupsByDay[date];
+                    }
+                }
+                document.getElementById('weekSignups').textContent = weekSignups;
+                
+                document.getElementById('statsDisplay').classList.remove('hidden');
+                
+                // Show alert with current count
+                alert(`Found ${stats.totalSignups} emails in storage. Check console for details.`);
+            }).catch(error => {
+                console.error('Failed to get stats:', error);
+                alert('Failed to get stats. Check console for details.');
+            });
+        }
+        
+        function configureN8N() {
+            const webhookUrl = document.getElementById('n8nWebhookUrl').value;
+            if (!webhookUrl) {
+                alert('Please enter a valid webhook URL');
+                return;
+            }
+            
+            GummyAdmin.setN8NWebhook(webhookUrl);
+            showStatus('n8nStatus', 'N8N webhook configured successfully!', 'success');
+        }
+        
+        function testN8NConnection() {
+            const webhookUrl = window.GUMMY_CONFIG?.N8N_WEBHOOK_URL;
+            if (!webhookUrl) {
+                showStatus('n8nStatus', 'No webhook URL configured', 'error');
+                return;
+            }
+            
+            // Send test data
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: 'test@gummy.co',
+                    source: 'admin-test',
+                    timestamp: new Date().toISOString(),
+                    test: true
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    showStatus('n8nStatus', 'N8N connection successful!', 'success');
+                } else {
+                    showStatus('n8nStatus', `Connection failed: ${response.status}`, 'error');
+                }
+            })
+            .catch(error => {
+                showStatus('n8nStatus', `Connection error: ${error.message}`, 'error');
+            });
+        }
+        
+        function viewEmails() {
+            const signups = GummyAdmin.viewSignups();
+            const tableBody = document.getElementById('emailTableBody');
+            
+            tableBody.innerHTML = signups.map(signup => `
+                <tr>
+                    <td>${signup.email}</td>
+                    <td>${signup.source}</td>
+                    <td>${new Date(signup.timestamp).toLocaleDateString()}</td>
+                    <td>${signup.referrer || 'Direct'}</td>
+                    <td>${signup.interest}</td>
+                </tr>
+            `).join('');
+            
+            document.getElementById('emailTableContainer').classList.remove('hidden');
+        }
+        
+        function searchEmails() {
+            const searchTerm = prompt('Enter email or domain to search:');
+            if (!searchTerm) return;
+            
+            const signups = JSON.parse(localStorage.getItem('gummy_signups') || '[]');
+            const filtered = signups.filter(signup => 
+                signup.email.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            
+            console.table(filtered);
+            alert(`Found ${filtered.length} matching emails. Check the console for details.`);
+        }
+        
+        function copyEmailList() {
+            const signups = JSON.parse(localStorage.getItem('gummy_signups') || '[]');
+            const emails = signups.map(signup => signup.email).join('\n');
+            
+            navigator.clipboard.writeText(emails).then(() => {
+                alert('Email list copied to clipboard!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = emails;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('Email list copied to clipboard!');
+            });
+        }
+        
+        function goToLandingPage() {
+            window.open('index.html', '_blank');
+        }
+        
+        function downloadBackup() {
+            const data = {
+                signups: JSON.parse(localStorage.getItem('gummy_signups') || '[]'),
+                config: JSON.parse(localStorage.getItem('gummy_config') || '{}'),
+                exportDate: new Date().toISOString()
+            };
+            
+            const jsonContent = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+            const link = document.createElement("a");
+            link.setAttribute("href", jsonContent);
+            link.setAttribute("download", `gummy_backup_${new Date().toISOString().split('T')[0]}.json`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function showStatus(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.display = 'block';
+            element.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+            element.style.color = type === 'success' ? '#155724' : '#721c24';
+            element.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
+            
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Load current N8N configuration on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const webhookUrl = window.GUMMY_CONFIG?.N8N_WEBHOOK_URL;
+            if (webhookUrl) {
+                document.getElementById('n8nWebhookUrl').value = webhookUrl;
+            }
+            
+            // Auto-refresh stats
+            refreshStats();
+        });
+    </script>
+</body>
+</html>
