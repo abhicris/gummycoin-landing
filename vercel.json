@@ -3,5 +3,11 @@
   "buildCommand": "echo 'Static site - no build required'",
   "outputDirectory": ".",
   "installCommand": "npm install",
-  "framework": null
+  "framework": null,
+  "routes": [
+    {
+      "src": "/links",
+      "dest": "/index.html"
+    }
+  ]
 }

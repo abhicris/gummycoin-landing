@@ -1,5 +1,19 @@
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+    // Handle URL routing for /links
+    if (window.location.pathname === '/links') {
+        // Scroll to links section after page loads
+        setTimeout(() => {
+            const linksSection = document.querySelector('#links');
+            if (linksSection) {
+                linksSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }, 100);
+    }
+
     // Smooth scroll for navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {

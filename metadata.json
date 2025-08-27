@@ -1,0 +1,41 @@
+{
+  "name": "GummyCoin",
+  "symbol": "GUM",
+  "description": "The official token of the Gummy ecosystem - where wellness meets play. Join the biggest gummy project backed by gummy market OGs and the crypto community.",
+  "image": "https://gummyco.in/assets/images/gummycoinlogo.png",
+  "external_url": "https://gummyco.in",
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Wellness"
+    },
+    {
+      "trait_type": "Ecosystem",
+      "value": "Gummy"
+    },
+    {
+      "trait_type": "Project",
+      "value": "GummyCoin by GummyCollective"
+    },
+    {
+      "trait_type": "Launch Type",
+      "value": "Fair Launch"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "type": "image/png",
+        "uri": "https://gummyco.in/assets/images/gummycoinlogo.png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "GFbDLnZFNwbcjytnkfEzLf2hy6raLfQtj2Qtevg2kBLV",
+        "share": 100
+      }
+    ]
+  }
+}
+
